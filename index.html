@@ -18,6 +18,12 @@
       <div class="w-full text-gray-400 bg-white-200 body-font">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
           <div class="p-4 flex flex-row items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <audio id="audioPlayer" src="Andra and The Backbone - Sempurna (lyrics).mp3"></audio>
+              <button onclick="toggleAudio()" id="playPauseBtn" class="text-black focus:outline-none">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
             <a href="#" class="text-lg uppercase font-semibold tracking-widest text-black rounded-lg focus:outline-none focus:shadow-outline">Portfolio Raja</a>
             <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
               <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
@@ -69,6 +75,25 @@
         </div>
       </footer>
 <!--Scripts Area-->
+    <script>
+      const audio = document.getElementById('audioPlayer');
+      const playPauseBtn = document.getElementById('playPauseBtn');
+
+      function toggleAudio() {
+        if (audio.paused) {
+          audio.play();
+          playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } 
+        else {
+          audio.pause();
+          playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+        }
+
+      function adjustVolume(volume) {
+        audio.volume = volume;
+      }
+    </script>
       <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
       <script src="js/aos.js"></script>
       <script>AOS.init();</script>
